@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <Button
+        android:text="Save"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/dbbutton" />
+    <Button
+        android:text="show data"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/showbtn" />
+    <Button
+        android:text="BLEscan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/scanner" />
+    <Button
+        android:text="Test"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnTest" />
+    <TextView
+        android:text="Text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtdata" />
+    <TextView
+        android:text="Devices"
+        android:scrollbars="vertical"
+        android:id="@+id/scanview"
+        android:isScrollContainer="true"
+        android:verticalScrollbarPosition="defaultPosition"
+        android:visibility="visible"
+        android:textSize="20sp"
+        android:textStyle="normal"
+        android:typeface="monospace"
+        android:textIsSelectable="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <ListView
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/listView1"
+        android:backgroundTint="#fff0ffff"
+        android:isScrollContainer="true" />
+</LinearLayout>
