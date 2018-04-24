@@ -47,8 +47,14 @@ namespace LatestApp
 			// aapt resource value: 0x7f040007
 			public const int Login1 = 2130968583;
 			
+			// aapt resource value: 0x7f04000c
+			public const int accountbtn = 2130968588;
+			
 			// aapt resource value: 0x7f040003
 			public const int btnTest = 2130968579;
+			
+			// aapt resource value: 0x7f04000d
+			public const int databasetxt = 2130968589;
 			
 			// aapt resource value: 0x7f040000
 			public const int dbbutton = 2130968576;
@@ -56,8 +62,8 @@ namespace LatestApp
 			// aapt resource value: 0x7f040006
 			public const int listView1 = 2130968582;
 			
-			// aapt resource value: 0x7f04000c
-			public const int listView2 = 2130968588;
+			// aapt resource value: 0x7f04000e
+			public const int listView2 = 2130968590;
 			
 			// aapt resource value: 0x7f04000b
 			public const int password = 2130968587;

@@ -30,6 +30,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/password" />
+    <Button
+        android:text="Create Account"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/accountbtn" />
+    <TextView
+        android:text="Database"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/databasetxt" />
     <ListView
         android:minWidth="25px"
         android:minHeight="25px"

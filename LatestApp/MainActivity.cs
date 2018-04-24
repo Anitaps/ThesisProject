@@ -8,12 +8,11 @@ using System.Text;
 using Android.App;
 using Android.Content;
 using Android.OS;
-using Android.Runtime;
-using Android.Views;
 using Android.Widget;
 using Plugin.BLE;
 using Plugin.BLE.Abstractions.Contracts;
 using SQLite;
+using System.Data.SqlClient;
 
 namespace LatestApp
 {
@@ -30,13 +29,17 @@ namespace LatestApp
         ListView listView;
         private static string prevLocation;
         Contact mycontact;
-        private static string clientId;
+        private static string clientId = UserLogin.User;
+        private static SqlConnectionStringBuilder databaseAddress;
+        private static SqlConnection connection;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.Main);
 
+            databaseAddress = createAddress();
+            connection = new SqlConnection(databaseAddress.ConnectionString);
             // Create your application here
             TextView scanview = FindViewById<TextView>(Resource.Id.scanview);
             TextView txt = FindViewById<TextView>(Resource.Id.txtdata);
@@ -64,17 +67,23 @@ namespace LatestApp
             Button button = FindViewById<Button>(Resource.Id.dbbutton);
             button.Click += delegate
             {
-                var db = new SQLiteConnection(dbPath);
-                //set up table
-                db.CreateTable<Contact>();
+                //var db = new SQLiteConnection(dbPath);
+                ////set up table
+                //db.CreateTable<Contact>();
 
-                //create new contact obj
+                ////create new contact obj
 
                 Contact myContact = new Contact(clientId, prevLocation);
 
-                //store obj into table
-                db.Insert(myContact);
-
+                ////store obj into table
+                //db.Insert(myContact);
+                connection.Open();
+                StringBuilder query = new StringBuilder();
+                query.Append("INSERT INTO UsersTable(Username, Location)VALUES('" + myContact.Name + "', '" + myContact.Location + "')");
+                string sqlquery = query.ToString();
+                SqlCommand command = new SqlCommand(sqlquery, connection);
+                command.ExecuteNonQuery();
+                connection.Close();
             };
             Button showbutton = FindViewById<Button>(Resource.Id.showbtn);
             showbutton.Click += delegate
@@ -146,7 +155,18 @@ namespace LatestApp
             //store obj into table
             db.Insert(mycontact);
         }
+        private SqlConnectionStringBuilder createAddress()
+        {
+            SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
+            builder.DataSource = "Server=tcp:myappdb.database.windows.net";
+            builder.UserID = "pushpendra";
+            builder.Password = "vHfj8P4j";
+            builder.InitialCatalog = "UsersDB";
+
+            return builder;
+        }
     }
+   
 }
 
 
